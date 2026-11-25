@@ -1,0 +1,141 @@
+
+{% extends "base.html" %}
+
+{% block title %}Scan History | LinkShield{% endblock %}
+{% block page_heading %}Scan History{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h2>Scan History</h2>
+    <p>Review and manage your previous security scans.</p>
+</div>
+
+<div class="stats-grid history-stats">
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>Total Scans</p>
+            <h3>{{ total_scans }}</h3>
+        </div>
+        <div class="stat-icon blue">↗</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>URL Scans</p>
+            <h3>{{ url_scans }}</h3>
+        </div>
+        <div class="stat-icon green">⌕</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>File Scans</p>
+            <h3>{{ file_scans }}</h3>
+        </div>
+        <div class="stat-icon orange">📁</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>High Risk</p>
+            <h3>{{ high_risk_scans }}</h3>
+        </div>
+        <div class="stat-icon red">!</div>
+    </div>
+
+</div>
+
+<div class="recent-activity history-section">
+
+    <div class="activity-header">
+        <div>
+            <h4>All Scan Records</h4>
+            <p>Browse your security scan history.</p>
+        </div>
+    </div>
+
+    <div class="history-filters">
+
+        <input type="search" id="historySearch"
+               placeholder="Search by URL or filename...">
+
+        <select id="typeFilter">
+            <option value="all">All Types</option>
+            <option value="url">URL Scan</option>
+            <option value="file">File Scan</option>
+        </select>
+
+        <select id="riskFilter">
+            <option value="all">All Results</option>
+            <option value="low_risk">Low Risk</option>
+            <option value="suspicious">Suspicious</option>
+            <option value="high_risk">High Risk</option>
+            <option value="confirmed_malicious">Confirmed Malicious</option>
+            <option value="inconclusive">Inconclusive</option>
+        </select>
+
+    </div>
+
+    <div class="activity-table-wrapper">
+
+        <table class="activity-table history-table">
+
+            <thead>
+                <tr>
+                    <th>Scan Target</th>
+                    <th>Type</th>
+                    <th>Verdict</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="historyTableBody">
+
+                {% for scan in scans %}
+
+                <tr class="history-row"
+                    data-target="{{ scan.target | lower }}"
+                    data-type="{{ scan.scan_type }}"
+                    data-risk="{{ scan.risk_level }}">
+
+                    <td>{{ scan.target }}</td>
+                    <td>{{ scan.scan_type | upper }}</td>
+                    <td>{{ scan.risk_level.replace('_', ' ') | title }}</td>
+                    <td>{{ scan.display_date }}</td>
+
+                    <td>
+                        <a href="/results/{{ scan.scan_id }}">View Results</a>
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="5" class="empty-activity">
+                        No scan records available yet.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', path='js/history.js') }}"></script>
+{% endblock %}

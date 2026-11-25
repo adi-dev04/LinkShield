@@ -1,0 +1,53 @@
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.results-header h2 {
+    color: #E2E8F0;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.results-header p {
+    color: #94A3B8;
+    margin: 0;
+}
+
+.results-card {
+    background: #111B2B;
+    border: 1px solid #263449;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.results-card h4 {
+    color: #E2E8F0;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.results-card p {
+    color: #94A3B8;
+    margin-bottom: 12px;
+}
+
+.results-card strong {
+    color: #CBD5E1;
+}
+
+.results-risk-badge {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94A3B8;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 20px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+}

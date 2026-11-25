@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+
+{% block title %}{% block page_heading %}URL Scanner{% endblock %} | LinkShield{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/scanner.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="scanner-page-header">
+    <h2>URL Security Scanner</h2>
+    <p>Analyze website URLs to identify potentially harmful links and security threats.</p>
+</div>
+
+<div class="scanner-main-card">
+
+    <div class="scanner-card-heading">
+        <div>
+            <h4>Enter Website URL</h4>
+            <p>Provide a URL to begin security analysis.</p>
+        </div>
+        <span class="scanner-main-icon">⌕</span>
+    </div>
+
+    <form id="urlScanForm">
+
+        <label for="urlInput">Website URL</label>
+
+        <div class="scanner-input-group">
+            <input
+                type="url"
+                id="urlInput"
+                placeholder="https://example.com"
+                required
+            >
+
+            <button type="submit" id="scanButton">
+                Scan URL
+            </button>
+        </div>
+
+        <div class="scanner-info">
+            <span>ⓘ</span>
+            Only HTTP and HTTPS URLs are supported.
+        </div>
+
+    </form>
+
+</div>
+
+<div class="scanner-result-card" id="scanResult">
+
+    <div class="result-empty">
+        <div class="result-empty-icon">⌕</div>
+        <h4>Ready to Scan</h4>
+        <p>Enter a website URL above to begin your security analysis.</p>
+    </div>
+
+</div>
+<script src="{{ url_for('static', path='js/url_scanner.js') }}"></script>
+
+{% endblock %}

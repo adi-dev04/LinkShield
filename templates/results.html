@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+{% block title %}Scan Results | LinkShield{% endblock %}
+{% block page_heading %}Scan Results{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/result.css') }}">
+{% endblock %}
+
+{% block content %}
+
+{% set risk_class = risk_level.replace('_', '-') %}
+
+<div class="results-header">
+    <div>
+        <h2>Security Scan Results</h2>
+        <p>Review the security analysis and detected findings.</p>
+    </div>
+
+    <span class="results-risk-badge {{ risk_class }}">
+        {{ risk_level.replace('_', ' ') | title }}
+    </span>
+</div>
+
+<div class="results-card">
+    <h4>Scan Overview</h4>
+
+    <p><strong>Scan ID:</strong> {{ scan.scan_id }}</p>
+    <p><strong>Scan Type:</strong> {{ scan.scan_type | upper }}</p>
+    <p><strong>Target:</strong> {{ scan.target }}</p>
+    <p><strong>Risk Level:</strong> {{ risk_level.replace('_', ' ') | title }}</p>
+
+    {% if risk_score is not none %}
+        <p><strong>Risk Score:</strong> {{ risk_score }}/100</p>
+    {% else %}
+        <p><strong>Risk Score:</strong> Not available</p>
+    {% endif %}
+
+    <p><strong>Analysis Status:</strong> {{ scan.status | title }}</p>
+    <p><strong>Scanned At:</strong> {{ display_date }}</p>
+</div>
+
+<div class="results-card">
+    <h4>Security Findings ({{ findings | length }})</h4>
+
+    {% if findings %}
+        {% for finding in findings %}
+            <div class="finding-item">
+                <h5>{{ finding.title }}</h5>
+                <p>{{ finding.description }}</p>
+                <p>
+                    <strong>Severity:</strong>
+                    {{ finding.severity | upper }}
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No configured warning indicators were detected.</p>
+        <p>This does not guarantee that the scanned target is safe.</p>
+    {% endif %}
+</div>
+
+<div class="results-card">
+    <h4>Next Steps</h4>
+    <p>Review the findings carefully and investigate any suspicious indicators.</p>
+
+    <a href="/api/report/{{ scan.scan_id }}/pdf" class="btn btn-primary">
+        Download PDF Report
+    </a>
+
+    <a href="/history" class="btn btn-primary">
+        View Scan History
+    </a>
+</div>
+
+{% endblock %}

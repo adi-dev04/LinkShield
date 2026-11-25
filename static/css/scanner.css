@@ -1,0 +1,339 @@
+
+/* Scanner Page Header */
+.scanner-page-header {
+    margin-bottom: 28px;
+}
+
+.scanner-page-header h2 {
+    color: #F1F5F9;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.scanner-page-header p {
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+/* Main Scanner Card */
+.scanner-main-card {
+    background: #111B2B;
+    border: 1px solid #263449;
+    border-radius: 14px;
+    padding: 30px;
+}
+
+.scanner-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.scanner-card-heading h4 {
+    color: #F1F5F9;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.scanner-card-heading p {
+    color: #94A3B8;
+    font-size: 13px;
+    margin: 0;
+}
+
+.scanner-main-icon {
+    width: 48px;
+    height: 48px;
+    background: #1E3A5F;
+    color: #38BDF8;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+}
+
+.scanner-main-card label {
+    display: block;
+    color: #CBD5E1;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Premium URL Input */
+.scanner-input-group {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 7px;
+    transition: border-color 0.2s;
+}
+
+.scanner-input-group:focus-within {
+    border-color: #3B82F6;
+}
+
+.scanner-input-group input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #F1F5F9;
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+.scanner-input-group input::placeholder {
+    color: #64748B;
+}
+
+/* Scan Button */
+.scanner-input-group button {
+    background: #2563EB;
+    color: #FFFFFF;
+    border: 1px solid #3B82F6;
+    border-radius: 8px;
+    padding: 0 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+
+.scanner-input-group button:hover {
+    background: #1D4ED8;
+    transform: translateY(-1px);
+}
+
+.scanner-input-group button:active {
+    transform: translateY(0);
+}
+
+.scanner-info {
+    margin-top: 15px;
+    color: #64748B;
+    font-size: 12px;
+}
+
+/* Empty Result Card */
+.scanner-result-card {
+    margin-top: 25px;
+    background: #111B2B;
+    border: 1px solid #263449;
+    border-radius: 14px;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.result-empty {
+    text-align: center;
+    max-width: 400px;
+}
+
+.result-empty-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    background: #1E293B;
+    color: #38BDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 18px;
+}
+
+.result-empty h4 {
+    color: #E2E8F0;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.result-empty p {
+    color: #94A3B8;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .scanner-main-card {
+        padding: 20px;
+    }
+
+    .scanner-input-group {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .scanner-input-group input {
+        padding: 14px 10px;
+    }
+
+    .scanner-input-group button {
+        padding: 14px;
+    }
+
+    .scanner-page-header h2 {
+        font-size: 22px;
+    }
+
+    .scanner-result-card {
+        padding: 20px;
+    }
+}
+
+
+/* File Upload Area */
+.upload-area {
+    background: #0B1220;
+    border: 2px dashed #334155;
+    border-radius: 12px;
+    padding: 45px 20px;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-area:hover,
+.upload-area.drag-active {
+    border-color: #3B82F6;
+    background: #101D32;
+}
+
+.upload-icon {
+    width: 58px;
+    height: 58px;
+    background: #1E3A5F;
+    color: #38BDF8;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 20px;
+}
+
+.upload-area h4 {
+    color: #E2E8F0;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.upload-area p {
+    color: #64748B;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.browse-button {
+    display: inline-block;
+    background: #2563EB;
+    color: white;
+    padding: 11px 24px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.browse-button:hover {
+    background: #1D4ED8;
+}
+
+.supported-formats {
+    color: #64748B;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+/* Selected File */
+.selected-file {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.file-icon {
+    font-size: 28px;
+}
+
+.file-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-details h5 {
+    color: #E2E8F0;
+    font-size: 14px;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+}
+
+.file-details p {
+    color: #64748B;
+    font-size: 12px;
+    margin: 0;
+}
+
+#removeFile {
+    background: transparent;
+    border: none;
+    color: #EF4444;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Scan File Button */
+.file-scan-button {
+    width: 100%;
+    background: #2563EB;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 22px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.file-scan-button:hover:not(:disabled) {
+    background: #1D4ED8;
+}
+
+.file-scan-button:disabled {
+    background: #263449;
+    color: #64748B;
+    cursor: not-allowed;
+}
+
+/* Responsive Upload */
+@media (max-width: 600px) {
+    .upload-area {
+        padding: 35px 15px;
+    }
+
+    .upload-area h4 {
+        font-size: 14px;
+    }
+}

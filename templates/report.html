@@ -1,0 +1,115 @@
+
+{% extends "base.html" %}
+
+{% block title %}Scan Report | LinkShield{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/report.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="report-header">
+    <div>
+        <h2>Security Scan Report</h2>
+        <p>Detailed analysis and security findings.</p>
+    </div>
+
+    <div class="report-actions">
+        <button class="report-btn secondary" disabled>Download PDF</button>
+        <button class="report-btn primary" disabled>Download JSON</button>
+    </div>
+</div>
+
+<!-- Scan Overview -->
+<div class="report-card">
+
+    <div class="report-section-heading">
+        <h4>Scan Overview</h4>
+        <span class="verdict-badge inconclusive">Inconclusive</span>
+    </div>
+
+    <div class="report-overview-grid">
+
+        <div>
+            <p>Scan ID</p>
+            <h5>{{ scan_id }}</h5>
+        </div>
+
+        <div>
+            <p>Scan Type</p>
+            <h5>Not Available</h5>
+        </div>
+
+        <div>
+            <p>Risk Score</p>
+            <h5>--</h5>
+        </div>
+
+        <div>
+            <p>Confidence</p>
+            <h5>--</h5>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Target Information -->
+<div class="report-card">
+
+    <h4>Target Information</h4>
+
+    <div class="target-information">
+        <p>Target</p>
+        <h5>Scan information will appear here.</h5>
+    </div>
+
+</div>
+
+<!-- Security Findings -->
+<div class="report-card">
+
+    <h4>Security Findings</h4>
+
+    <div class="findings-empty">
+        <span>ⓘ</span>
+        <p>No security findings available for this scan.</p>
+    </div>
+
+</div>
+
+<!-- Analysis Information -->
+<div class="report-card">
+
+    <h4>Analysis Information</h4>
+
+    <div class="analysis-row">
+        <span>Rule-based detection</span>
+        <span class="analysis-status">Not performed</span>
+    </div>
+
+    <div class="analysis-row">
+        <span>Machine learning detection</span>
+        <span class="analysis-status">Not performed</span>
+    </div>
+
+    <div class="analysis-row">
+        <span>External checks</span>
+        <span class="analysis-status">Not performed</span>
+    </div>
+
+</div>
+
+<!-- Recommended Action -->
+<div class="report-card">
+
+    <h4>Recommended Action</h4>
+
+    <p class="recommendation-text">
+        No recommendation is available until a security analysis has been completed.
+    </p>
+
+</div>
+
+{% endblock %}

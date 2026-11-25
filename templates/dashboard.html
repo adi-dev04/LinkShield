@@ -1,0 +1,139 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | LinkShield{% endblock %}
+{% block page_heading %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <h2>Welcome to LinkShield</h2>
+    <p>Monitor, scan and protect against potential security threats.</p>
+</div>
+
+<!-- Statistics Cards -->
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>Total Scans</p>
+            <h3>{{ total_scans }}</h3>
+        </div>
+        <div class="stat-icon blue">↗</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>Low Risk</p>
+            <h3>{{ low_risk }}</h3>
+        </div>
+        <div class="stat-icon green">✓</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>Suspicious</p>
+            <h3>{{ suspicious }}</h3>
+        </div>
+        <div class="stat-icon orange">!</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <p>High Risk</p>
+            <h3>{{ high_risk }}</h3>
+        </div>
+        <div class="stat-icon red">⚠</div>
+    </div>
+
+</div>
+
+<!-- Quick URL Scanner -->
+<div class="quick-scanner">
+
+    <div class="scanner-heading">
+        <div>
+            <h4>Quick URL Scanner</h4>
+            <p>Check a website URL for potential security threats.</p>
+        </div>
+        <span class="scanner-icon">⌕</span>
+    </div>
+
+    <form id="quickScanForm">
+
+        <div class="url-input-group">
+            <input
+                type="url"
+                id="quickUrl"
+                placeholder="https://example.com"
+                required
+            >
+
+            <button type="submit">
+                Scan URL
+            </button>
+        </div>
+
+        <p class="scanner-tip">
+            <span>ⓘ</span>
+            Enter a complete HTTP or HTTPS URL to begin scanning.
+        </p>
+
+    </form>
+
+</div>
+
+<!-- Recent Scan Activity -->
+<div class="recent-activity">
+
+    <div class="activity-header">
+        <div>
+            <h4>Recent Scan Activity</h4>
+            <p>Your latest security scan records.</p>
+        </div>
+
+        <a href="/history" class="view-all">View All</a>
+    </div>
+
+    <div class="activity-table-wrapper">
+        <table class="activity-table">
+
+            <thead>
+                <tr>
+                    <th>Scan Target</th>
+                    <th>Scan Type</th>
+                    <th>Result</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in recent_scans %}
+                <tr>
+                    <td>{{ item.scan.target }}</td>
+                    <td>{{ item.scan.scan_type | upper }}</td>
+                    <td>{{ item.scan.risk_level.replace('_', ' ') | title }}</td>
+                    <td>{{ item.display_date }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="empty-activity">
+                        No scan activity available yet.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+
+</div>
+{% block extra_js %}
+<script src="{{ url_for('static', path='js/dashboard.js') }}"></script>
+{% endblock %}
+
+{% endblock %}
